@@ -1,0 +1,14 @@
+{
+  "name":"InfluxDBSinkConnector_console",
+  "config":{
+    "name":"InfluxDBSinkConnector_console",
+    "connector.class":"io.confluent.influxdb.InfluxDBSinkConnector",
+    "tasks.max":1,
+    "topics":"products",
+    "influxdb.url":"http://influx-grafana:8086",
+    "influxdb.db":"influxTestDB",
+    "measurement.name.format":"${topic}",
+    "value.converter":"io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url":"http://schema-registry:8081"
+  }
+}

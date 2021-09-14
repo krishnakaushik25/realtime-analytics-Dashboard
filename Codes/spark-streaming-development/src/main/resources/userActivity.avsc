@@ -1,0 +1,27 @@
+{
+   "name":"ConsumerActivity",
+   "type":"record",
+   "fields":[
+      {
+         "name":"id",
+         "type":"int"
+      },
+      {
+         "name":"campaignid",
+         "type":"int"
+      },
+      {
+         "name":"orderid",
+         "type":"int"
+      },
+      {
+         "name":"total_amount",
+         "type":"int"
+      },
+      {
+         "name":"units",
+         "type":"int"
+      },
+      {"name":"tags","type":{"type":"map","values":"string"}}
+   ]
+}

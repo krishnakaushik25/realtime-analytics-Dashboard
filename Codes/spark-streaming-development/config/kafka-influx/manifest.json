@@ -1,0 +1,28 @@
+{
+  "name" : "kafka-connect-influxdb",
+  "version" : "1.2.1",
+  "title" : "Kafka Connect InfluxDB",
+  "description" : "Kafka Connect Source and Sink Connectors for InfluxDB",
+  "owner" : {
+    "username" : "confluentinc",
+    "name" : "Confluent, Inc."
+  },
+  "support" : {
+    "summary" : "This connector is <a href=\"https://www.confluent.io/subscription/\">supported by Confluent</a> as part of a\n<a href=\"https://www.confluent.io/product/confluent-platform/\">Confluent Platform</a> subscription."
+  },
+  "tags" : [ "Time Series", "Database" ],
+  "features" : {
+    "supported_encodings" : [ "any" ],
+    "single_message_transforms" : true,
+    "confluent_control_center_integration" : true,
+    "kafka_connect_api" : true
+  },
+  "documentation_url" : "https://docs.confluent.io/current/connect/kafka-connect-influxdb/",
+  "docker_image" : { },
+  "license" : [ {
+    "name" : "Confluent Software Evaluation License",
+    "url" : "https://www.confluent.io/software-evaluation-license"
+  } ],
+  "component_types" : [ "sink", "source" ],
+  "release_date" : "2020-09-30"
+}
