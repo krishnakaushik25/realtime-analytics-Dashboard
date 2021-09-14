@@ -1,2 +1,4 @@
+
 # realtime-analytics-Dashboard
-Build a Real-Time Dashboard with Spark, Grafana, and InfluxDB
+Built a realtime user friendly e-commerce users analytics Dashboard by using Spark , Grafana, and InfluxDB by consuming different events 
+such as user clicks, orders, demographics.
