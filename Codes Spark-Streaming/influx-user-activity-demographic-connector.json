@@ -1,0 +1,14 @@
+{
+  "name":"InfluxDBSinkConnector_user_activity_demographics",
+  "config":{
+    "name":"InfluxDBSinkConnector_user_activity_demographics",
+    "connector.class":"io.confluent.influxdb.InfluxDBSinkConnector",
+    "tasks.max":1,
+    "topics":"user_activity_demographics",
+    "influxdb.url":"http://influx-grafana:8086",
+    "influxdb.db":"userengagement",
+    "measurement.name.format":"${topic}",
+    "value.converter":"io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url":"http://schema-registry:8081"
+  }
+}

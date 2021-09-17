@@ -1,0 +1,14 @@
+{
+  "name":"InfluxDBSinkConnector_consumer_activity_1",
+  "config":{
+    "name":"InfluxDBSinkConnector_consumer_activity_1",
+    "connector.class":"io.confluent.influxdb.InfluxDBSinkConnector",
+    "tasks.max":1,
+    "topics":"consumer_activity",
+    "influxdb.url":"http://influx-grafana:8086",
+    "influxdb.db":"userengagement",
+    "measurement.name.format":"${topic}_1",
+    "value.converter":"io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url":"http://schema-registry:8081"
+  }
+}

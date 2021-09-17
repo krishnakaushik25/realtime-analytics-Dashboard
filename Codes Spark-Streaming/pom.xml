@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>default</groupId>
+    <artifactId>spark-streaming_2.12</artifactId>
+    <packaging>jar</packaging>
+    <description>Spark-Streaming</description>
+    <version>0.1</version>
+    <name>Spark-Streaming</name>
+    <organization>
+        <name>default</name>
+    </organization>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.12</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.20</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.12</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_2.12</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-kafka-0-10_2.12</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql-kafka-0-10_2.12</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-avro_2.12</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.12.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>1.8.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>za.co.absa</groupId>
+            <artifactId>abris_2.12</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
+
+
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>Bintray</id>
+            <name>Bintray</name>
+            <url>https://dl.bintray.com/sbt/sbt-plugin-releases/</url>
+            <layout>default</layout>
+        </repository>
+
+        <repository>
+            <id>mvn</id>
+            <name>mvn</name>
+            <url>https://mvnrepository.com/repos/central/</url>
+            <layout>default</layout>
+        </repository>
+
+        <repository>
+            <id>confluent</id>
+            <name>confluent</name>
+            <url>https://packages.confluent.io/maven/</url>
+            <layout>default</layout>
+        </repository>
+
+    </repositories>
+
+    <build>
+        <plugins>
+            <!-- other maven plugins in the project -->
+            <!-- <plugin>
+                 <groupId>org.apache.avro</groupId>
+                 <artifactId>avro-maven-plugin</artifactId>
+                 <version>1.8.2</version>
+                 <executions>
+                     <execution>
+                         <phase>generate-sources</phase>
+                         <goals>
+                             <goal>schema</goal>
+                         </goals>
+                         <configuration>
+                             <sourceDirectory>src/main/resources</sourceDirectory>
+                             <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                             <stringType>String</stringType>
+                         </configuration>
+                     </execution>
+                 </executions>
+             </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
