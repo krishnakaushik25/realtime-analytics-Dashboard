@@ -1,0 +1,658 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Apache Spark </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ddbe5046-7a43-4aca-8faa-0c6ec67b3350" class="page sans"><header><h1 class="page-title">Apache Spark </h1></header><div class="page-body"><nav id="259e44f3-5b7c-476f-83de-6e297c71f929" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f858a980-829c-485d-92cb-565ed22aa649"><span style="border-bottom:0.05em solid"><strong>Overview</strong></span></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#66aef169-b2d9-4dfe-afb9-7d41bb9e9feb"><strong><span style="border-bottom:0.05em solid">Quick Start</span></strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1d5d87e1-d676-4697-9c29-42c63d4490a2"> <span style="border-bottom:0.05em solid"><strong>Installation</strong></span></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#59d80156-b77b-403d-9895-b2bd3aa612cb"><span style="border-bottom:0.05em solid"><strong>Write a word-count Program</strong></span>  </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e2097e2b-1c5a-4d09-a517-7297d94a89fa"><span style="border-bottom:0.05em solid"><strong>Architecture</strong></span></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4fce02d2-4330-455d-b74a-38c22c09be7f"><span style="border-bottom:0.05em solid"><strong>Highlights of Spark</strong></span></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fe146849-ab4c-4356-ae38-2e2c0e1fdb46"><span style="border-bottom:0.05em solid"><strong>Core Concepts</strong></span></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5e6ea1db-a6a5-46f2-9ea7-e0ebe12289a7"><span style="border-bottom:0.05em solid"><strong>Reference</strong></span></a></div></nav><h1 id="f858a980-829c-485d-92cb-565ed22aa649" class=""><span style="border-bottom:0.05em solid"><strong>Overview</strong></span></h1><p id="d040b77b-87c3-43b5-82e3-5f6854ccf585" class="">Apache spark is an open source lightning fast unified analytics engine for large scale processing and machine learning. It provides high-level APIs in Java, Scala, Python and R, and an optimized engine that supports general execution graphs.</p><p id="09ccdca5-4f8f-40bd-88d0-930197b9c649" class="">
+</p><h1 id="66aef169-b2d9-4dfe-afb9-7d41bb9e9feb" class=""><strong><span style="border-bottom:0.05em solid">Quick Start</span></strong></h1><p id="1b1f188c-8130-4dd3-9516-2d574bff9957" class="">
+</p><h1 id="1d5d87e1-d676-4697-9c29-42c63d4490a2" class=""> <span style="border-bottom:0.05em solid"><strong>Installation</strong></span></h1><p id="2690637a-cfb8-4e92-8a11-479be18a4408" class="">
+</p><ul id="f48661db-1d07-464b-a743-e298ad301435" class="bulleted-list"><li>Download a docker image : <mark class="highlight-gray_background">docker pull bitnami/spark</mark></li></ul><ul id="4b1e37b2-afc8-420d-a1f0-fe6d901603bb" class="bulleted-list"><li>Once downloaded , run the image : <mark class="highlight-gray_background">docker run -d --name spark bitnami/spark</mark></li></ul><ul id="405f8642-f4e0-47ad-9e7d-b5de7affd2e8" class="bulleted-list"><li>Open the container in interactive mode: <mark class="highlight-gray_background">docker exec -it spark shell</mark></li></ul><ul id="a1574a49-77ae-4ff1-b978-c770cc46220c" class="bulleted-list"><li>Create a text file using command: <mark class="highlight-gray_background">cd /tmp &amp;&amp; echo &quot;apple orrage guava mango pineapple peaches apple mango oragne orange \n apple orrage guava mango pineapple peaches apple mango oragne orange &quot; &gt; words.txt</mark></li></ul><ul id="a02bf11d-eb99-4c40-b945-2ad6307be043" class="bulleted-list"><li>Run: <mark class="highlight-gray_background">spark-shell</mark> . It should open a scala based spark shell like below.</li></ul><figure id="dc146c50-4060-4720-a92b-ef5cc1d7d690" class="image"><a href="Apache%20Spark%20ddbe50467a434aca8faa0c6ec67b3350/Screenshot_2021-07-29_at_9.42.58_PM.png"><img style="width:624px" src="Apache%20Spark%20ddbe50467a434aca8faa0c6ec67b3350/Screenshot_2021-07-29_at_9.42.58_PM.png"/></a></figure><p id="27caeacc-9ef7-4e0d-9a17-95e80bcbc9ae" class="">
+</p><h1 id="59d80156-b77b-403d-9895-b2bd3aa612cb" class=""><span style="border-bottom:0.05em solid"><strong>Write a word-count Program</strong></span>  </h1><p id="f9894a16-5312-4c60-9ccb-185a95c663c2" class="">
+</p><ul id="2734bfa4-d48f-4b48-b7ea-28ed3bbb7454" class="bulleted-list"><li>Inside spark-shell Run this below code </li></ul><pre id="93462375-a1d4-4d69-8850-97da4de3eec3" class="code"><code>val textFile = spark.read.textFile(&quot;/tmp/words.txt&quot;)
+textFile: org.apache.spark.sql.Dataset[String] = [value: string]
+
+val wordCounts = textFile.flatMap(line =&gt; line.split(&quot; &quot;)).groupByKey(identity).count()
+wordCounts: org.apache.spark.sql.Dataset[(String, Long)] = [key: string, count(1): bigint]
+
+wordCounts.collect()
+res0: Array[(String, Long)] = Array((orange,2), (apple,4), (mango,4), (orrage,2), (pineapple,2), (guava,2), (peaches,2), (oragne,2), (&quot;&quot;,1))</code></pre><p id="3b6f73ca-7648-40e7-9f34-c30687c16773" class="">
+</p><h1 id="e2097e2b-1c5a-4d09-a517-7297d94a89fa" class=""><span style="border-bottom:0.05em solid"><strong>Architecture</strong></span></h1><p id="a43edb8f-54ce-4901-aa69-54562699d6d3" class="">
+</p><figure id="85f0fa75-55da-461e-9b74-89061d6518c4" class="image"><a href="Apache%20Spark%20ddbe50467a434aca8faa0c6ec67b3350/Screenshot_2021-07-29_at_10.25.47_PM.png"><img style="width:1074px" src="Apache%20Spark%20ddbe50467a434aca8faa0c6ec67b3350/Screenshot_2021-07-29_at_10.25.47_PM.png"/></a></figure><p id="beedc204-28db-47d0-8937-ffa98212c543" class="">
+</p><p id="90f3e13d-d430-400b-bf3d-0a28ebd474e1" class="">
+</p><p id="4a3eb830-425d-4aac-9fb8-685c30f6844c" class="">
+</p><figure id="e99e80cb-1f9e-4ce1-a311-9707fecd7c66" class="image"><a href="Apache%20Spark%20ddbe50467a434aca8faa0c6ec67b3350/Screenshot_2021-07-29_at_10.18.15_PM.png"><img style="width:1204px" src="Apache%20Spark%20ddbe50467a434aca8faa0c6ec67b3350/Screenshot_2021-07-29_at_10.18.15_PM.png"/></a></figure><p id="2a7dab1f-2960-4063-b97d-b6d6d178447d" class="">
+</p><p id="58b35cae-b589-4ff8-afa0-3a7849b520cf" class="">
+</p><h1 id="4fce02d2-4330-455d-b74a-38c22c09be7f" class=""><span style="border-bottom:0.05em solid"><strong>Highlights of Spark</strong></span></h1><ul id="9c107575-7a12-43f3-816e-9d3d56f4a73f" class="bulleted-list"><li>Speed</li></ul><ul id="4c4875c3-d6b9-42c5-b3f5-c84d481fede6" class="bulleted-list"><li>Ease of Use</li></ul><ul id="d0d399e2-864f-4c96-aff7-9fda5fc74d15" class="bulleted-list"><li>A Unified Engine</li></ul><ul id="2ccd343b-9269-41f2-aee2-2fd65c79b567" class="bulleted-list"><li>Spark Web UI (localhost:4040)</li></ul><figure id="c421c7d7-73a3-478b-a1b9-18a522103ded" class="image"><a href="Apache%20Spark%20ddbe50467a434aca8faa0c6ec67b3350/Screenshot_2021-07-30_at_1.11.50_PM.png"><img style="width:2810px" src="Apache%20Spark%20ddbe50467a434aca8faa0c6ec67b3350/Screenshot_2021-07-30_at_1.11.50_PM.png"/></a></figure><p id="9c315ce7-9848-4c74-8a86-b2ea5c305266" class="">
+</p><h1 id="fe146849-ab4c-4356-ae38-2e2c0e1fdb46" class=""><span style="border-bottom:0.05em solid"><strong>Core Concepts</strong></span></h1><ul id="9662a115-7d0f-40c8-b9f8-47144fa411e8" class="bulleted-list"><li>DAG &amp; Lazy Evaluation</li></ul><ul id="9b445fd7-d9ca-41d9-8ad5-cdfc855f398a" class="bulleted-list"><li>Transformations and actions </li></ul><ul id="229f7a32-ed7f-4ee2-ad25-3deec4c8b33f" class="bulleted-list"><li>RDD &amp; Dataframe </li></ul><ul id="94fc8eac-9278-4e7e-b827-ee6513a77f08" class="bulleted-list"><li>SparkSession</li></ul><p id="25579cd3-c78f-492c-864f-64ca44041d45" class="">
+</p><h1 id="5e6ea1db-a6a5-46f2-9ea7-e0ebe12289a7" class=""><span style="border-bottom:0.05em solid"><strong>Reference</strong></span></h1><p id="4bfed564-d610-4b2e-8f95-98db44678923" class=""><a href="https://spark.apache.org/docs/latest/quick-start.html">https://spark.apache.org/docs/latest/quick-start.html</a> </p><p id="8b85e027-99bc-42b4-96cc-4850397014bd" class=""><a href="https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/">https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/</a> </p><p id="0c9189cf-76fd-4566-a290-abed71be2ed6" class=""><a href="https://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten/">https://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten/</a> </p><p id="88a11f6d-ed0c-4345-982b-7e5ab47fef61" class=""><a href="https://spark.apache.org/docs/latest/configuration.html">https://spark.apache.org/docs/latest/configuration.html</a> </p><p id="c768dcc6-9185-4a16-a6f2-98c56424242c" class=""><a href="https://spark.apache.org/docs/latest/api/java/index.html">https://spark.apache.org/docs/latest/api/java/index.html</a></p><p id="68880f02-b82b-4d34-ad9e-0ec44d7ed931" class="">
+</p></div></article></body></html>
